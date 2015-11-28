@@ -21,8 +21,4 @@ set statusline+=%f
 set ls=2
 set number
 
-set textwidth=80
-set wrapmargin=2
-set formatoptions+=t
-set wrap
 set linebreak
