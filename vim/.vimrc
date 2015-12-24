@@ -10,7 +10,7 @@ set expandtab
 set shiftwidth=2
 set showmatch
 set mouse=a
-syntax on
+syntax enable
 
 set ruler
 set showcmd
@@ -22,3 +22,6 @@ set ls=2
 set number
 
 set linebreak
+
+set runtimepath^=~/.vim/bundle/node
+set runtimepath^=~/.vim/bundle/vim-javascript
