@@ -23,5 +23,4 @@ set number
 
 set linebreak
 
-set runtimepath^=~/.vim/bundle/node
-set runtimepath^=~/.vim/bundle/vim-javascript
+execute pathogen#infect()
