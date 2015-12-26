@@ -1,6 +1,4 @@
 " Custom Syntax Highlighting Rules "
-" Array Brackets [ ]
-hi jsBrackets     ctermfg=170
 " Function Braces { }
 hi jsFuncBraces   ctermfg=81
 " Function Arguments function(arg) {}
