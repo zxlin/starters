@@ -28,4 +28,7 @@ set number
 
 set linebreak
 
+:command Trim %s/\s\+%//
+map tr :Trim<CR>
+
 execute pathogen#infect()
