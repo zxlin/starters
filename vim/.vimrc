@@ -28,7 +28,15 @@ set number
 
 set linebreak
 
-:command Trim %s/\s\+%//
-map tr :Trim<CR>
-
 execute pathogen#infect()
+
+" syntastic eslint
+let g:syntastic_javascript_eslint_exec = 'eslint'
+let g:syntastic_javascript_checkers = ['eslint']
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
