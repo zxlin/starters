@@ -61,8 +61,10 @@ endfunction
 
 autocmd FileType javascript call SetupJavaScriptLinter()
 
-" use 256 colors in terminal
-if !has("gui_running")
+" tmux setting
+if !empty($TMUX)
   set t_Co=256
   set term=screen-256color
 endif
+
+let g:airline_theme='hybridline'
