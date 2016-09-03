@@ -65,4 +65,4 @@ autocmd FileType javascript call SetupJavaScriptLinter()
 if !has("gui_running")
   set t_Co=256
   set term=screen-256color
-e
+endif
