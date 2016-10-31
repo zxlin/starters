@@ -68,3 +68,9 @@ if !empty($TMUX)
 endif
 
 let g:airline_theme='hybridline'
+let g:airline_powerline_fonts = 1
+
+map <ScrollWheelUp> <C-Y>
+map <S-ScrollWheelUp> <C-U>
+map <ScrollWheelDown> <C-E>
+map <S-ScrollWheelDown> <C-D>
