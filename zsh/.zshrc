@@ -85,3 +85,9 @@ source $ZSH/oh-my-zsh.sh
 
 bindkey '\e[1~' beginning-of-line
 bindkey '\e[4~' end-of-line
+
+# Restore SSH agent information for TMUX
+if [ -n "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/auth_sock" ]; then
+    ln -sf $SSH_AUTH_SOCK $HOME/.ssh/auth_sock \
+    && export SSH_AUTH_SOCK=$HOME/.ssh/auth_sock
+fi
