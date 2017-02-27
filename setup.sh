@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# check for zsh existence
+command -v zsh >/dev/null 2>&1 || { echo >&2 "$1 aborted, please install zsh first"; exit 1; }
+
 cp -r ./vim/.vimrc ~/
 mkdir -p ~/.vim/
 cp -r ./vim/.vim/* ~/.vim/
