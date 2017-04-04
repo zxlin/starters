@@ -28,7 +28,25 @@ set number
 
 set linebreak
 
-execute pathogen#infect()
+" Setup the vundle runtime "
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'pangloss/vim-javascript'
+"Plugin 'jelera/vim-javascript-syntax'
+Plugin 'mxw/vim-jsx'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'ervandew/supertab'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" All Vundle plugins must be declared before this line "
+call vundle#end()
+filetype plugin indent on
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -38,28 +56,8 @@ set statusline+=%*
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Syntastic local linter support
-let g:syntastic_javascript_checkers = []
-
-function CheckJavaScriptLinter(filepath, linter)
-  if exists('b:syntastic_checkers')
-    return
-  endif
-  if filereadable(a:filepath)
-    let b:syntastic_checkers = [a:linter]
-    let {'b:syntastic_' . a:linter . '_exec'} = a:filepath
-  endif
-endfunction
-
-function SetupJavaScriptLinter()
-  let l:current_folder = expand('%:p:h')
-  let l:bin_folder = fnamemodify(syntastic#util#findFileInParent('package.json', l:current_folder), ':h')
-  let l:bin_folder = l:bin_folder . '/node_modules/.bin/'
-  call CheckJavaScriptLinter(l:bin_folder . 'standard', 'standard')
-  call CheckJavaScriptLinter(l:bin_folder . 'eslint', 'eslint')
-endfunction
-
-autocmd FileType javascript call SetupJavaScriptLinter()
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
 " tmux setting
 if !empty($TMUX)
@@ -67,10 +65,12 @@ if !empty($TMUX)
   set term=screen-256color
 endif
 
-let g:airline_theme='hybridline'
 let g:airline_powerline_fonts = 1
+let g:airline_theme = 'hybridline'
 
-map <ScrollWheelUp> <C-Y>
-map <S-ScrollWheelUp> <C-U>
-map <ScrollWheelDown> <C-E>
-map <S-ScrollWheelDown> <C-D>
+set cursorline
+highlight CursorLineNr cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+
+highlight link jsGlobalObjects Special
+highlight link jsTemplateBraces Special
+highlight link jsGlobalNodeObjects Keyword
