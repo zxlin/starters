@@ -6,9 +6,11 @@ command -v pip >/dev/null 2>&1 || { echo >&2 "$1 aborted, please install python-
 
 sudo pip install git+git://github.com/Lokaltog/powerline
 
+git clone https://github.com/VundleVim/Vundle.vim.git ./vim/.vim/bundle/Vundle.vim
 cp -r ./vim/.vimrc ~/
 mkdir -p ~/.vim/
 cp -r ./vim/.vim/* ~/.vim/
+vim +PluginInstall +qall
 cp -r ./git/.gitconfig ~/
 cp -r ./tmux/.tmux.conf ~/
 cat ./bash/.bash_profile >> ~/.bash_profile
