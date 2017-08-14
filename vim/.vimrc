@@ -74,3 +74,7 @@ highlight CursorLineNr cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NON
 highlight link jsGlobalObjects Special
 highlight link jsTemplateBraces Special
 highlight link jsGlobalNodeObjects Keyword
+
+set wildmenu
+set wildmode=list:longest
+set wildignorecase
