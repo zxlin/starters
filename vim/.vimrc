@@ -28,6 +28,8 @@ set number
 
 set linebreak
 
+set formatoptions+=r
+
 " Setup the vundle runtime "
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
