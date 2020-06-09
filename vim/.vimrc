@@ -42,6 +42,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'ervandew/supertab'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'wsdjeg/vim-fetch'
 
 " All Vundle plugins must be declared before this line "
 call vundle#end()
