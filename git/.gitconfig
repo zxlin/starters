@@ -8,3 +8,6 @@
   lg = !"git lg1"
   stat = status
   co = checkout
+[grep]
+	lineNumber = true
+  column = true
