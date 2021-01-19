@@ -1,5 +1,5 @@
 [push]
-	default = matching
+  default = matching
 [core]
   editor = vim
 [alias]
@@ -9,5 +9,5 @@
   stat = status
   co = checkout
 [grep]
-	lineNumber = true
+  lineNumber = true
   column = true
