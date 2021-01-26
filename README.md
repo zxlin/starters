@@ -13,4 +13,8 @@ To install all the files, run
 
 This will change your default shell to `zsh` instead of `bash` that ships with most systems. 
 
+### Additional
+
+You should install `shellcheck` if you want to check shell scripts
+
 Tested on latest Ubuntu and MacOS.
