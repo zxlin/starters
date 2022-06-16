@@ -5,7 +5,7 @@ command -v zsh >/dev/null 2>&1 || { echo >&2 "$1 aborted, please install zsh fir
 command -v pip3 >/dev/null 2>&1 || { echo >&2 "$1 aborted, please install python3-pip first"; exit 1; }
 
 ### Powerline - fancy status bar
-sudo pip3 install git+git://github.com/powerline/powerline
+sudo pip3 install powerline-status
 
 ### diff-highlight for git
 sudo pip3 install diff-highlight
