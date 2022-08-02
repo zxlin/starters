@@ -22,8 +22,10 @@ vim +PluginInstall +qall
 
 mkdir -p ~/.ssh
 cp -r ./git/.gitconfig ~/
-cp -r ./tmux/.tmux.conf ~/
 cat ./bash/.bash_profile >> ~/.bash_profile
+cp -r ./tmux/.tmux.conf ~/
+ESC_PIP_LOCATION=$(pip3 show powerline-status | grep 'Location:' | awk '{ print $2 }' | sed 's_/_\\/_g')
+sed -i -e "s/\$POWERLINE_LOCATION/$ESC_PIP_LOCATION/" ~/.tmux.conf
 
 # Oh My Zsh is a zsh theming library
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
