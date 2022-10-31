@@ -4,6 +4,10 @@
 command -v zsh >/dev/null 2>&1 || { echo >&2 "$1 aborted, please install zsh first"; exit 1; }
 command -v pip3 >/dev/null 2>&1 || { echo >&2 "$1 aborted, please install python3-pip first"; exit 1; }
 
+### setup timezone for the machine
+TIMEZONE=$(curl -s https://ipinfo.io | grep '"timezone":' | awk '{ print $2 }' | tr -d ',"')
+sudo timedatectl set-timezone "$TIMEZONE"
+
 ### Powerline - fancy status bar
 sudo pip3 install powerline-status
 
