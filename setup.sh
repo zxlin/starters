@@ -24,6 +24,11 @@ cp -r ./vim/.vim/* ~/.vim/
 # Below installs all the vim plugins using Vundle
 vim +PluginInstall +qall
 
+# Setup GPG forwarding files
+mkdir -p ~/.gnupg
+cp ./gpg/gpg.conf ~/.gnupg/gpg.conf
+grep -qxF 'StreamLocalBindUnlink yes' /etc/ssh/sshd_config || echo 'StreamLocalBindUnlink yes' >> /etc/ssh/sshd_config
+
 mkdir -p ~/.ssh
 cp -r ./git/.gitconfig ~/
 cat ./bash/.bash_profile >> ~/.bash_profile
