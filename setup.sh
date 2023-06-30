@@ -37,6 +37,9 @@ ESC_PIP_LOCATION=$(pip3 show powerline-status | grep 'Location:' | awk '{ print 
 sed -i -e "s/\$POWERLINE_LOCATION/$ESC_PIP_LOCATION/" ~/.tmux.conf
 
 # Oh My Zsh is a zsh theming library
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 cp ./zsh/.zshrc ~/.zshrc
 curl https://raw.githubusercontent.com/oskarkrawczyk/honukai-iterm/master/honukai.zsh-theme -o ~/.oh-my-zsh/themes/honukai.zsh-theme
+
+echo "You may need to install Powerline fonts (see README) if you see weird squares in tmux or vim."
+echo "Setup complete, exit and sign back in for updated zsh environment."
