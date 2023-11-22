@@ -86,6 +86,10 @@ source $ZSH/oh-my-zsh.sh
 bindkey '\e[1~' beginning-of-line
 bindkey '\e[4~' end-of-line
 
+function git-replace() {
+  git grep -l "$1" | xargs sed -i -e "s/$1/$2/g"
+}
+
 # Restore SSH agent information for TMUX
 if [ -n "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/auth_sock" ]; then
     ln -sf $SSH_AUTH_SOCK $HOME/.ssh/auth_sock \
