@@ -12,7 +12,7 @@ set showmatch
 set mouse=a
 if has("mouse_sgr")
   set ttymouse=sgr
-else
+elseif !has("nvim")
   set ttymouse=xterm2
 end
 syntax enable
@@ -71,7 +71,9 @@ nnoremap <leader>f mF:%!eslint_d --stdin --fix-to-stdout<CR>`F
 " tmux setting
 if !empty($TMUX)
   set t_Co=256
-  set term=screen-256color
+  if !has("nvim")
+    set term=screen-256color
+  end
 endif
 
 let g:airline_powerline_fonts = 1

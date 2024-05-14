@@ -3,6 +3,7 @@
 ### check for zsh & pip existence
 command -v zsh >/dev/null 2>&1 || { echo >&2 "$1 aborted, please install zsh first"; exit 1; }
 command -v pip3 >/dev/null 2>&1 || { echo >&2 "$1 aborted, please install python3-pip first"; exit 1; }
+command -v nvim >/dev/null 2>&1 || { echo >&2 "$1 aborted, please install neovim first"; exit 1; }
 
 ### setup timezone for the machine
 TIMEZONE=$(curl -s https://ipinfo.io | grep '"timezone":' | awk '{ print $2 }' | tr -d ',"')
@@ -23,6 +24,8 @@ mkdir -p ~/.vim/
 cp -r ./vim/.vim/* ~/.vim/
 # Below installs all the vim plugins using Vundle
 vim +PluginInstall +qall
+mkdir -p ~/.config/nvim
+cp ./vim/neo.vim ~/.config/nvim/init.vim
 
 # Setup GPG forwarding files
 mkdir -p ~/.gnupg

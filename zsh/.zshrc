@@ -95,3 +95,5 @@ if [ -n "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/auth_sock" ]; then
     ln -sf $SSH_AUTH_SOCK $HOME/.ssh/auth_sock \
     && export SSH_AUTH_SOCK=$HOME/.ssh/auth_sock
 fi
+
+alias vim="nvim" # default to neovim, use vi to get original vim
