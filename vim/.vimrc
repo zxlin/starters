@@ -1,7 +1,6 @@
 colorscheme molokai
 filetype plugin indent on
 set background=dark
-
 set nocompatible
 set softtabstop=2
 set tabstop=2
@@ -10,68 +9,51 @@ set expandtab
 set shiftwidth=2
 set showmatch
 set mouse=a
-if has("mouse_sgr")
-  set ttymouse=sgr
-elseif !has("nvim")
-  set ttymouse=xterm2
-end
-syntax enable
-
 set ruler
 set showcmd
-
 set smartcase
-
 set statusline+=%f
 set ls=2
 set number
-
 set linebreak
-
 set formatoptions+=r
+set wildmenu
+set wildmode=list:longest
+set wildignorecase
+set guicursor=i:block
+syntax enable
+if has('mouse_sgr')
+  set ttymouse=sgr
+elseif !has('nvim')
+  set ttymouse=xterm2
+end
 
-" Setup the vundle runtime "
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Setup the Plugins
+call plug#begin()
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
-Plugin 'pangloss/vim-javascript'
-Plugin 'maxmellon/vim-jsx-pretty'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'ervandew/supertab'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'wsdjeg/vim-fetch'
+Plug 'tpope/vim-fugitive'
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'ervandew/supertab'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'wsdjeg/vim-fetch'
+Plug 'dense-analysis/ale'
 
-" All Vundle plugins must be declared before this line "
-call vundle#end()
-filetype plugin indent on
+" Certain plugins are neovim only
+if has('nvim')
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+end
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = 'eslint_d'
-
-let g:syntastic_filetype_map = { "javascriptreact": "javascript" }
-
-let g:vim_jsx_pretty_highlight_close_tag = 1
-
-" Autofix entire buffer with eslint_d:
-nnoremap <leader>f mF:%!eslint_d --stdin --fix-to-stdout<CR>`F
+" All Plugins must be declared before this line
+call plug#end()
 
 " tmux setting
 if !empty($TMUX)
   set t_Co=256
-  if !has("nvim")
+  if !has('nvim')
     set term=screen-256color
   end
 endif
@@ -86,6 +68,19 @@ highlight link jsGlobalObjects Special
 highlight link jsTemplateBraces Special
 highlight link jsGlobalNodeObjects Keyword
 
-set wildmenu
-set wildmode=list:longest
-set wildignorecase
+" Press tab to auto-complete
+let g:SuperTabDefaultCompletionType = '<c-n>'
+
+" :WS to write file as root
+command WS :execute ':silent w !sudo tee % > /dev/null' | :edit!
+" \ef - autofix entire buffer with eslint_d:
+nnoremap <leader>ef mF:%!eslint_d --stdin --fix-to-stdout<CR>`F
+" \ff - open Telescope find files
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+
+" Declare what linters to use with which languages
+let g:ale_linters_explicit = 1
+let b:ale_linters = {
+\ 'javascript': ['eslint'],
+\}
+

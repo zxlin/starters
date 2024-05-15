@@ -16,16 +16,16 @@ sudo pip3 install powerline-status
 sudo pip3 install diff-highlight
 
 ### Vim setup
-# Vundle is a Vim bundle/plugin system, allows for quick and easy installation of new vim plugins
-git clone https://github.com/VundleVim/Vundle.vim.git ./vim/.vim/bundle/Vundle.vim
+# vim-plug is a Vim plugin system, allows for quick and easy installation of new vim plugins
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # Modify your vimrc as necessary to remove any plugins or add any plugins
 cp -r ./vim/.vimrc ~/
 mkdir -p ~/.vim/
 cp -r ./vim/.vim/* ~/.vim/
-# Below installs all the vim plugins using Vundle
-vim +PluginInstall +qall
 mkdir -p ~/.config/nvim
 cp ./vim/neo.vim ~/.config/nvim/init.vim
+# Below installs all the vim plugins
+nvim +PlugInstall +qall
 
 # Setup GPG forwarding files
 mkdir -p ~/.gnupg
