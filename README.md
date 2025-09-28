@@ -33,4 +33,4 @@ Then install using system font installer.
 
 You should install `shellcheck` if you want to check shell scripts
 
-Tested on latest Ubuntu and MacOS.
+Tested on latest Ubuntu.
