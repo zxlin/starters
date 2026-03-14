@@ -34,7 +34,7 @@ mkdir -p ~/.ssh
 cp -r ./git/.gitconfig ~/
 cat ./bash/.bash_profile >> ~/.bash_profile
 cp -r ./tmux/.tmux.conf ~/
-TMUX_POWERLINE_LOCATION="/usr/share/powerline/bindings/tmux/powerline.conf"
+TMUX_POWERLINE_LOCATION="/usr/share"
 ESC_POWERLINE_LOCATION=$(echo $TMUX_POWERLINE_LOCATION | sed 's_/_\\/_g')
 sed -i -e "s/\$POWERLINE_LOCATION/$ESC_POWERLINE_LOCATION/" ~/.tmux.conf
 
